@@ -24,5 +24,5 @@ if face_list[0].startswith('Hero') == -1:
   facelist.append(face_list[0])
 
 
-def randomize_face ()
+def randomize_face ():
     random.choice(face_list)
