@@ -122,7 +122,7 @@ def randomize_battles(is_switch: bool, randomize_music=True, randomize_backgroun
                         new_enemy = random.choice(new_enemies)
                     # If the new enemy is a boss with a set face, add its face
                     if new_enemy in boss_to_face_dict:
-                        subprocess.run(command, randomize_face=true)
+                        subprocess.run(command, randomize_face=True)
                     # Store this new random enemy
                     randomized_row[enemy_index] = new_enemy
                 # Clear out remaining enemy cells
