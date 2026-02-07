@@ -120,7 +120,7 @@ def randomize_battles(is_switch: bool, randomize_music=True, randomize_backgroun
                     new_enemy = random.choice(new_enemies)
                     while new_enemy == 'Goblin0_Dish':
                         new_enemy = random.choice(new_enemies)
-                    # If the new enemy is a boss with a set face, add its face
+                    # If the new enemy is a boss, choose a face.
                     if new_enemy in boss_to_face_dict:
                         subprocess.run(command, randomize_face=True)
                     # Store this new random enemy
