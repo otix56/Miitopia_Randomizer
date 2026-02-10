@@ -11,7 +11,7 @@ from MiitopiaRandomizer.const import battle_files_to_randomize, world_limit, bas
 from MiitopiaRandomizer.util import verify_input_files, copy_input_to_output, read_input_sarc, \
     get_csv_rows_from_input_sarc, randomize_csv_rows, get_writer_from_output_sarc, write_sarc_to_output, \
     get_data_file_path, get_csv_rows_from_file
-from MiitopiaRandomizer.enemy import face_list, randomize_face
+
 
 def randomize_battles(is_switch: bool, randomize_music=True, randomize_backgrounds=True):
     verify_input_files(required_files['battles'])
@@ -120,9 +120,10 @@ def randomize_battles(is_switch: bool, randomize_music=True, randomize_backgroun
                     new_enemy = random.choice(new_enemies)
                     while new_enemy == 'Goblin0_Dish':
                         new_enemy = random.choice(new_enemies)
-                    # If the new enemy is a boss, choose a face.
+                    # If the new enemy is a boss with a set face, add its face
                     if new_enemy in boss_to_face_dict:
-                        subprocess.run(command, randomize_face=True)
+                        face_to_add = boss_to_face_dict[new_enemy]
+                        new_enemy += f',{face_to_add}'
                     # Store this new random enemy
                     randomized_row[enemy_index] = new_enemy
                 # Clear out remaining enemy cells
@@ -470,4 +471,4 @@ def randomize_colors():
     sarc_writer.add_file('Color.csv', randomized_data.read().encode())
     write_sarc_to_output(sarc_writer, 'equipment.sarc')
 
-    logger.info('Randomized Equipment Colors')
+    logger.info('Randomized Equipment')                            
